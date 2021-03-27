@@ -1,0 +1,31 @@
+# +----------------------------------------------------------------------------+
+# | MM6DTest v0.1 * Tester program for MM6D remote controlled switching device |
+# | Copyright (C) 2021 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>            |
+# | makefile                                                                   |
+# | Makefile for DOS                                                           |
+# +----------------------------------------------------------------------------+
+
+processor=-3
+memory_model=-ml
+dircpp=cpp
+dirh=h
+compile_options = $(processor) $(memory_model) -bc -d0 -i=$(dirh) -i=$(dircpp)
+objs = ipcheck.obj messages.obj utils.obj t_http.obj mm6dth.obj
+
+all: mm6dth.exe
+
+clean : .symbolic
+  @del mm6dth.exe
+  @del *.obj
+  @del *.map
+
+install : .symbolic
+  @copy mm6dth.exe ..\..
+
+.cpp : $(dircpp)
+
+.cpp.obj :
+  wpp $[* $(compile_options)
+
+mm6dth.exe: $(objs)
+  wlink system dos option eliminate option map option stack=4096 name $@ file *.obj

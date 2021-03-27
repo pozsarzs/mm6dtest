@@ -1,0 +1,60 @@
+MM6DTest - Tester program for MM6D remote controlled switching device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. About software
+-----------------
+  It is a tester program for MM6D device. You can retrieve information
+  about device and status of equipment and switch on/off outputs via HTTP.
+
+Requirements:
+
+  DOS version:
+    Hardware:    AT or newer computer,
+                 80386 or newer processor,
+                 NIC.
+    Software:    FreeDOS,
+                 Packet driver for NIC,
+                 GNU Wget.
+
+  Linux version:
+    Hardware:    AT or newer computer,
+                 80386 or newer processor,
+                 NIC.
+    Software:    GNU/Linux OS,
+                 GNU Wget.
+
+2. How to get installer package for my OS?
+------------------------------------------
+a. Visit homepage (see later) to download installer packages:
+
+  DOS:           MM6DTH01.ZIP
+  Linux:         mm6dtest-0.1-i386.tar.gz
+
+  (These packages content GNU Wget.)
+
+b. Download from Github
+
+  > git clone https://github.com/pozsarzs/mm6dtest.git
+
+3. How to set the program?
+-------------------------
+  If Waterloo TCP/IP is not installed on your computer (on DOS only), edit WATTCP.CFG
+  file.
+
+4. Contact
+----------
+   Homepage:             <http://www.szerafingomba.hu/softwares/>
+   Author:               Pozsar Zsolt
+   Tax ID:               60407850-1-36
+   Registration num.:    20703695
+
+   E-mail:               <pozsar.zsolt@szerafingomba.hu>
+   Phone:                +36 56/470-272
+   Mobile:               +36 30/249-5030
+   Postal address:       Pozsar Zsolt
+                         Kurazsi Fo ut 1.
+                         HU-5430 Tiszafoldvar
+                         Hungary
+
+--------------------------------------------------------------------------------
+ MM6DTest * Copyright (C) 2021 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>
