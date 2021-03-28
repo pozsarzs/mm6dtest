@@ -51,7 +51,7 @@ void headerwithmenu(int menu)
   if (menu == 0)
   {
     printf(msg(11));
-    for (int i = 5; i < 20; i++) printf("\t%x:\t\t%s\n",i-4,msg(i+7));
+    for (int i = 5; i < 19; i++) printf("\t%x:\t\t%s\n",i-4,msg(i+7));
     printf(msg(8));
   } else
   {
@@ -151,7 +151,6 @@ void f03(void)
   free(url);
   if (rc == 0)
   {
-    free(input);
   } else printf(msg(9));
   pause(27,msg(10));
 }
@@ -167,6 +166,17 @@ void f04(void)
   free(url);
   if (rc == 0)
   {
+    char *input = (char*) malloc(255);
+    strcpy(input,outBuffer);
+    char *token = strtok(input,"\n");
+    int line = 0;
+    while (token != NULL)
+    {
+//      if (line == 0)
+//        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+      token = strtok(NULL,"\n");
+      line++;
+    }
     free(input);
   } else printf(msg(9));
   pause(27,msg(10));
@@ -183,6 +193,17 @@ void f05(void)
   free(url);
   if (rc == 0)
   {
+    char *input = (char*) malloc(255);
+    strcpy(input,outBuffer);
+    char *token = strtok(input,"\n");
+    int line = 0;
+    while (token != NULL)
+    {
+//      if (line == 0)
+//        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+      token = strtok(NULL,"\n");
+      line++;
+    }
     free(input);
   } else printf(msg(9));
   pause(27,msg(10));
@@ -199,6 +220,17 @@ void f06(void)
   free(url);
   if (rc == 0)
   {
+    char *input = (char*) malloc(255);
+    strcpy(input,outBuffer);
+    char *token = strtok(input,"\n");
+    int line = 0;
+    while (token != NULL)
+    {
+//      if (line == 0)
+//        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+      token = strtok(NULL,"\n");
+      line++;
+    }
     free(input);
   } else printf(msg(9));
   pause(27,msg(10));
