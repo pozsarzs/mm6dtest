@@ -53,12 +53,7 @@ void headerwithmenu(int menu)
     printf(msg(11));
     for (int i = 5; i < 19; i++) printf("\t%x:\t\t%s\n",i-4,msg(i+7));
     printf(msg(8));
-  } else
-  {
-    if (menu>17)
-      printf("\n%s:\n\n",msg(menu)); else
-      printf("\n%s:\n\n",msg(menu+11));
-  }
+  } else printf("\n%s:\n\n",msg(menu+11));
 }
 
 // open webpage and save content to temporary file
@@ -102,9 +97,9 @@ void f01(void)
     int line = 0;
     while (token != NULL)
     {
-      if (line == 0) printf("%s%s\n",msg(45),token);
-      if (line == 1) printf("%s%s\n",msg(46),token);
-      if (line == 2) printf("%s%s\n",msg(47),token);
+      if (line == 0) printf("%s%s\n",msg(39),token);
+      if (line == 1) printf("%s%s\n",msg(40),token);
+      if (line == 2) printf("%s%s\n",msg(41),token);
       token = strtok(NULL,"\n");
       line++;
     }
@@ -131,7 +126,7 @@ void f02(void)
     while (token != NULL)
     {
       if (line == 0)
-        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(26));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -151,6 +146,24 @@ void f03(void)
   free(url);
   if (rc == 0)
   {
+    char *input = (char*) malloc(255);
+    strcpy(input,outBuffer);
+    char *token = strtok(input,"\n");
+    int line = 0;
+    while (token != NULL)
+    {
+      if (line == 0)
+        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(26));
+      if (line == 1)
+        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(36));
+      if (line == 2)
+        if (strncmp(token,"1",1) == 0) printf(msg(6)); else printf(msg(7));
+      if (line == 3)
+        if (strncmp(token,"1",1) == 0) printf(msg(37)); else printf(msg(38));
+      token = strtok(NULL,"\n");
+      line++;
+    }
+    free(input);
   } else printf(msg(9));
   pause(27,msg(10));
 }
@@ -160,7 +173,7 @@ void f04(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(15);
+  headerwithmenu(4);
   sprintf(url,"%s/get/operationmode?uid=%s",ip,uid);
   rc = openwebpage(url,1);
   free(url);
@@ -172,8 +185,8 @@ void f04(void)
     int line = 0;
     while (token != NULL)
     {
-//      if (line == 0)
-//        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+      if (line == 0)
+        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(36));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -187,7 +200,7 @@ void f05(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(16);
+  headerwithmenu(5);
   sprintf(url,"%s/get/manualswitch?uid=%s",ip,uid);
   rc = openwebpage(url,1);
   free(url);
@@ -199,8 +212,8 @@ void f05(void)
     int line = 0;
     while (token != NULL)
     {
-//      if (line == 0)
-//        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+      if (line == 0)
+        if (strncmp(token,"1",1) == 0) printf(msg(6)); else printf(msg(7));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -214,7 +227,7 @@ void f06(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(17);
+  headerwithmenu(6);
   sprintf(url,"%s/get/protection?uid=%s",ip,uid);
   rc = openwebpage(url,1);
   free(url);
@@ -226,8 +239,8 @@ void f06(void)
     int line = 0;
     while (token != NULL)
     {
-//      if (line == 0)
-//        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(44));
+      if (line == 0)
+        if (strncmp(token,"1",1) == 0) printf(msg(37)); else printf(msg(38));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -241,7 +254,7 @@ void f07(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(18);
+  headerwithmenu(7);
   sprintf(url,"%s/get/lamp?uid=%s",ip,uid);
   rc = openwebpage(url,1);
   free(url);
@@ -270,7 +283,7 @@ void f08(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(19);
+  headerwithmenu(8);
   sprintf(url,"%s/get/ventilator?uid=%s",ip,uid);
   rc = openwebpage(url,1);
   free(url);
@@ -299,7 +312,7 @@ void f09(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(20);
+  headerwithmenu(9);
   sprintf(url,"%s/get/heater?uid=%s",ip,uid);
   rc = openwebpage(url,1);
   free(url);
@@ -328,8 +341,8 @@ void f10(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(21);
-  lamp = ! lamp;
+  headerwithmenu(10);
+  printf(msg(42));
   sprintf(url,"%s/set/alarm/off?uid=%s",ip,uid);
   rc = openwebpage(url,0);
   free(url);
@@ -342,7 +355,7 @@ void f11(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(23);
+  headerwithmenu(11);
   lamp = ! lamp;
   if (lamp)
     printf("%s%s%s",msg(27),msg(30),msg(32)); else
@@ -361,7 +374,7 @@ void f12(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(24);
+  headerwithmenu(12);
   ventilator = ! ventilator;
   if (ventilator)
     printf("%s%s%s",msg(28),msg(30),msg(32)); else
@@ -380,7 +393,7 @@ void f13(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(25);
+  headerwithmenu(13);
   heater = ! heater;
   if (heater)
     printf("%s%s%s",msg(29),msg(30),msg(32)); else
@@ -399,7 +412,7 @@ void f14(void)
 {
   int rc;
   char *url = (char*) malloc(255);
-  headerwithmenu(26);
+  headerwithmenu(14);
   printf(msg(33));
   sprintf(url,"%s/set/all/off?uid=%s",ip,uid);
   rc = openwebpage(url,0);
