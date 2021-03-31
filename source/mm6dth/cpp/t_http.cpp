@@ -51,7 +51,7 @@ void headerwithmenu(int menu)
   if (menu == 0)
   {
     printf(msg(11));
-    for (int i = 5; i < 19; i++) printf("\t%x:\t\t%s\n",i-4,msg(i+7));
+    for (int i = 5; i < 20; i++) printf("\t%x:\t\t%s\n",i-4,msg(i+7));
     printf(msg(8));
   } else printf("\n%s:\n\n",msg(menu+11));
 }
@@ -61,7 +61,7 @@ int openwebpage(char *url, bool readfile)
 {
   int rc;
   char *commandline = (char*)malloc(255);
-  sprintf(commandline,"%s%s http://%s",HTTPGETPROG,TEMPFILE,url);
+  sprintf(commandline,"%s%s 'http://%s'",HTTPGETPROG,TEMPFILE,url);
   rc = system(commandline);
   free(commandline);
   if ((rc == 0) && (readfile))
@@ -97,9 +97,9 @@ void f01(void)
     int line = 0;
     while (token != NULL)
     {
-      if (line == 0) printf("%s%s\n",msg(39),token);
-      if (line == 1) printf("%s%s\n",msg(40),token);
-      if (line == 2) printf("%s%s\n",msg(41),token);
+      if (line == 0) printf("%s%s\n",msg(40),token);
+      if (line == 1) printf("%s%s\n",msg(41),token);
+      if (line == 2) printf("%s%s\n",msg(42),token);
       token = strtok(NULL,"\n");
       line++;
     }
@@ -126,7 +126,7 @@ void f02(void)
     while (token != NULL)
     {
       if (line == 0)
-        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(26));
+        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(27));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -153,13 +153,13 @@ void f03(void)
     while (token != NULL)
     {
       if (line == 0)
-        if (strncmp(token,"1",1) == 0) printf(msg(34)); else printf(msg(26));
+        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(27));
       if (line == 1)
-        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(36));
+        if (strncmp(token,"1",1) == 0) printf(msg(36)); else printf(msg(37));
       if (line == 2)
         if (strncmp(token,"1",1) == 0) printf(msg(6)); else printf(msg(7));
       if (line == 3)
-        if (strncmp(token,"1",1) == 0) printf(msg(37)); else printf(msg(38));
+        if (strncmp(token,"1",1) == 0) printf(msg(38)); else printf(msg(39));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -186,7 +186,7 @@ void f04(void)
     while (token != NULL)
     {
       if (line == 0)
-        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(36));
+        if (strncmp(token,"1",1) == 0) printf(msg(36)); else printf(msg(37));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -240,7 +240,7 @@ void f06(void)
     while (token != NULL)
     {
       if (line == 0)
-        if (strncmp(token,"1",1) == 0) printf(msg(37)); else printf(msg(38));
+        if (strncmp(token,"1",1) == 0) printf(msg(38)); else printf(msg(39));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -268,8 +268,8 @@ void f07(void)
     {
       if (line == 0)
         if (strncmp(token,"1",1) == 0)
-          printf("%s%s%s",msg(27),msg(30),msg(31)); else
-          printf("%s%s%s",msg(27),msg(30),msg(32));
+          printf("%s%s%s",msg(28),msg(31),msg(32)); else
+          printf("%s%s%s",msg(28),msg(31),msg(33));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -297,8 +297,8 @@ void f08(void)
     {
       if (line == 0)
         if (strncmp(token,"1",1) == 0)
-          printf("%s%s%s",msg(28),msg(30),msg(31)); else
-          printf("%s%s%s",msg(28),msg(30),msg(32));
+          printf("%s%s%s",msg(29),msg(31),msg(32)); else
+          printf("%s%s%s",msg(29),msg(31),msg(33));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -326,8 +326,8 @@ void f09(void)
     {
       if (line == 0)
         if (strncmp(token,"1",1) == 0)
-          printf("%s%s%s",msg(29),msg(30),msg(31)); else
-          printf("%s%s%s",msg(29),msg(30),msg(32));
+          printf("%s%s%s",msg(30),msg(31),msg(32)); else
+          printf("%s%s%s",msg(30),msg(31),msg(33));
       token = strtok(NULL,"\n");
       line++;
     }
@@ -342,7 +342,7 @@ void f10(void)
   int rc;
   char *url = (char*) malloc(255);
   headerwithmenu(10);
-  printf(msg(42));
+  printf(msg(43));
   sprintf(url,"%s/set/alarm/off?uid=%s",ip,uid);
   rc = openwebpage(url,0);
   free(url);
@@ -358,8 +358,8 @@ void f11(void)
   headerwithmenu(11);
   lamp = ! lamp;
   if (lamp)
-    printf("%s%s%s",msg(27),msg(30),msg(32)); else
-    printf("%s%s%s",msg(27),msg(30),msg(31));
+    printf("%s%s%s",msg(28),msg(31),msg(33)); else
+    printf("%s%s%s",msg(28),msg(31),msg(32));
   if (lamp)
     sprintf(url,"%s/set/lamp/off?uid=%s",ip,uid); else
     sprintf(url,"%s/set/lamp/on?uid=%s",ip,uid);
@@ -377,8 +377,8 @@ void f12(void)
   headerwithmenu(12);
   ventilator = ! ventilator;
   if (ventilator)
-    printf("%s%s%s",msg(28),msg(30),msg(32)); else
-    printf("%s%s%s",msg(28),msg(30),msg(31));
+    printf("%s%s%s",msg(29),msg(31),msg(33)); else
+    printf("%s%s%s",msg(29),msg(31),msg(32));
   if (ventilator)
     sprintf(url,"%s/set/ventilator/off?uid=%s",ip,uid); else
     sprintf(url,"%s/set/ventilator/on?uid=%s",ip,uid);
@@ -396,8 +396,8 @@ void f13(void)
   headerwithmenu(13);
   heater = ! heater;
   if (heater)
-    printf("%s%s%s",msg(29),msg(30),msg(32)); else
-    printf("%s%s%s",msg(29),msg(30),msg(31));
+    printf("%s%s%s",msg(30),msg(31),msg(33)); else
+    printf("%s%s%s",msg(30),msg(31),msg(32));
   if (heater)
     sprintf(url,"%s/set/heater/off?uid=%s",ip,uid); else
     sprintf(url,"%s/set/heater/on?uid=%s",ip,uid);
@@ -413,11 +413,58 @@ void f14(void)
   int rc;
   char *url = (char*) malloc(255);
   headerwithmenu(14);
-  printf(msg(33));
+  printf(msg(34));
   sprintf(url,"%s/set/all/off?uid=%s",ip,uid);
   rc = openwebpage(url,0);
   free(url);
   if (rc != 0) printf(msg(9));
+  pause(27,msg(10));
+}
+
+// set status of all outputs and get all status (except outputs)
+void f15(void)
+{
+  int rc;
+  int a, h, l, v;
+  char *url = (char*) malloc(255);
+  headerwithmenu(15);
+  printf(msg(44));
+  scanf("%d",&a);
+  printf(msg(45));
+  scanf("%d",&h);
+  printf(msg(46));
+  scanf("%d",&l);
+  printf(msg(47));
+  scanf("%d",&v);
+  headerwithmenu(15);
+  if (a > 0) a = 1; else a = 0;
+  if (h > 0) h = 1; else h = 0;
+  if (l > 0) l = 1; else l = 0;
+  if (v > 0) v = 1; else v = 0;
+  sprintf(url,"%s/operation?uid=%s&a=%d&h=%d&l=%d&v=%d", ip, uid, a, h, l, v);
+  rc = openwebpage(url,1);
+  free(url);
+  if (rc == 0)
+  {
+    char *input = (char*) malloc(255);
+    strcpy(input,outBuffer);
+    char *token = strtok(input,"\n");
+    int line = 0;
+    while (token != NULL)
+    {
+      if (line == 0)
+        if (strncmp(token,"1",1) == 0) printf(msg(35)); else printf(msg(27));
+      if (line == 1)
+        if (strncmp(token,"1",1) == 0) printf(msg(36)); else printf(msg(37));
+      if (line == 2)
+        if (strncmp(token,"1",1) == 0) printf(msg(6)); else printf(msg(7));
+      if (line == 3)
+        if (strncmp(token,"1",1) == 0) printf(msg(38)); else printf(msg(39));
+      token = strtok(NULL,"\n");
+      line++;
+    }
+    free(input);
+  } else printf(msg(9));
   pause(27,msg(10));
 }
 
@@ -451,6 +498,7 @@ void httptest(char *iip, char *iuid)
         case 'c': f12(); headerwithmenu(0); break;
         case 'd': f13(); headerwithmenu(0); break;
         case 'e': f14(); headerwithmenu(0); break;
+        case 'f': f15(); headerwithmenu(0); break;
       }
       if (ch == 'q') repeat = false;
     }
