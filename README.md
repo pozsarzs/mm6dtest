@@ -1,6 +1,6 @@
 **MM6DTest * Tester program for MM6D remote controlled switching device**  
-Copyright (C) 2021 Pozsar Zsolt <pozsar.zsolt@szerafingomba.hu>  
-Homepage: <http://www.szerafingomba.hu/softwares/>  
+Copyright (C) 2021 Pozsár Zsolt <pozsarzs@gmail.com>  
+Homepage: <http://www.pozsarzs.hu>  
 GitHub: <https://github.com/pozsarzs/mm6dtest>
 
 **Software**
